@@ -13,9 +13,8 @@ canvas.addEventListener('mousedown', () => {
     currentPath = [];
 });
 
-canvas.addEventListener('mousemove', () => {
+canvas.addEventListener('mouseup', () => {
     if (currentPath.length > 0) {
-        socket.emit('draw', currentPath);
         currentPath = [];
     }
     drawing = false;
@@ -36,6 +35,10 @@ canvas.addEventListener('mousemove', (e) => {
     context.stroke();
     context.beginPath();
     context.moveTo(x, y);
+
+    if (currentPath.length > 0) {
+        socket.emit('draw', currentPath);
+    }
 
     currentPath.push({ x, y });
 });
