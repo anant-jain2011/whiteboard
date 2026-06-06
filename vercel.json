@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "./index.js", "use": "@vercel/node" },
+    { "src": "socket-server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    {
+      "src": "/socket.io",
+      "dest": "socket-server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
