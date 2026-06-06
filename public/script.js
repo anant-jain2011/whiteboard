@@ -13,7 +13,7 @@ canvas.addEventListener('mousedown', () => {
     currentPath = [];
 });
 
-canvas.addEventListener('mouseup', () => {
+canvas.addEventListener('mousemove', () => {
     if (currentPath.length > 0) {
         socket.emit('draw', currentPath);
         currentPath = [];
